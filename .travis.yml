@@ -5,9 +5,12 @@ language: python
 
 jobs:
   include:
-    - script: echo "Build...."
     - stage: Testing
+      before_script:
+       - echo "Before Script"
       script: echo "Testing...."
+      after_script:
+       - echo "After Script.."
     - stage: Deploy
       script: echo "Deploy...."
       
