@@ -1,0 +1,13 @@
+os:
+  - linux
+
+language: python
+
+jobs:
+  include:
+    - script: echo "Build...."
+    - stage: Testing
+      script: echo "Testing...."
+    - stage: Deploy
+      script: echo "Deploy...."
+      
