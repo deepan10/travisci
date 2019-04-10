@@ -2,22 +2,22 @@ os:
   - linux
 
 language: python
+matrix:
+  include:
+    - python: "3.6"
+      env: TOXENV=py36
+    - python: "3.5"
+      env: TOXENV=py35
+
+before_script:
+  - echo "Before Script"
+script:
+  - echo "Testing...."
+  - python -V
+after_script:
+  - echo "After Script.."
 
 jobs:
   include:
-    - stage: Testing
-      matrix:
-      include:
-        - python: "3.6"
-          env: TOXENV=py36
-        - python: "3.5"
-          env: TOXENV=py35
-      before_script:
-       - echo "Before Script"
-      script:
-       - echo "Testing...."
-       - python -V
-      after_script:
-       - echo "After Script.."
     - stage: Deploy
       script: echo "Deploy...."
