@@ -4,26 +4,15 @@ os:
 language: python
 
 stages:
-  - Test with py35
-  - Test with py36
-  - name: Deploy
-    if: branch = master
-
+  - compile
+  - test
+  - deploy
+env:
+  - FOO=one
+  - FOO=two
 jobs:
   include:
-    - stage: Test with py35
-      python: "3.5"
-      env:
-        - TOXENV=py35
-      script:
-        - python -V
-        - echo "$TOXENV"
-    - stage: Test with py36
-      python: "3.6"
-      env:
-        - TOXENV=py36
-      script:
-        - python -V
-        - echo "$TOXENV"
-    - stage: Deploy
-      script: echo "Deploy...."
+    - stage: compile
+      script: ./compile
+    - stage: deploy
+      script: ./deploy
