@@ -3,6 +3,12 @@ os:
 
 language: python
 
+stages:
+  - Test with py35
+  - Test with py36
+  - name: Deploy
+    if: branch = master
+
 jobs:
   include:
     - stage: Test with py35
