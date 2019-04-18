@@ -12,9 +12,12 @@ stages:
 jobs:
   include:
     - stage: Test with py35
-      python: "3.5"
+      python: 
+        - "3.5"
+        - "3.6"
       env:
         - TOXENV=py35
+        - TOXENV=py36
       script:
         - python -V
         - echo "$TOXENV"
